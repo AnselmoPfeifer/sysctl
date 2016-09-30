@@ -5,6 +5,13 @@ describe file('/proc/sys/net/ipv4/tcp_max_syn_backlog') do
   it { should contain '12345' }
 end
 
+#Solution to sysctl: cannot stat /proc/sys/ipv4: No such file or directory
+describe file('/proc/sys/net/ipv4/tcp_syncookies') do
+  it { should be_file }
+  it { should contain '12345' }
+end
+
+
 describe file('/proc/sys/net/ipv4/tcp_rmem') do
   it { should be_file }
   it { should contain '4096	16384	33554432' }
