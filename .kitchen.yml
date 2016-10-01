@@ -42,20 +42,29 @@ suites:
         net:
           ipv4:
             tcp_fin_timeout: 29
+
 - name: lwrps
   run_list:
     - recipe[sysctl_test]
     - recipe[sysctl_test::tcp_wmem]
+
 - name: attributes
   run_list:
     - recipe[sysctl::apply]
   attributes:
     sysctl:
       params:
-        vm:
-          swappiness: 19
         net:
           ipv4:
-            tcp_fin_timeout: 29
             tcp_syncookies: 1
-
+            tcp_syncookies: 1
+            tcp_max_syn_backlog: 2048
+            tcp_synack_retries: 2
+            tcp_syn_retries: 5
+            icmp_echo_ignore_all: 1
+            icmp_echo_ignore_broadcasts: 1
+            ip_forward: 0
+            all_rp_filter: 1
+            default_rp_filter: 1
+            all_send_redirects: 0
+            default_send_redirects: 0

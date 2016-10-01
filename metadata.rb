@@ -8,11 +8,13 @@ description 'Configures sysctl parameters'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.8.0'
 chef_version '>= 12'
+
 supports 'ubuntu', '>= 12.04'
 supports 'debian', '>= 7.0'
 supports 'centos', '>= 5.9'
 supports 'scientific', '>= 6.4'
 supports 'suse', '>= 11.0'
+
 %w(redhat pld).each do |os|
   supports os
 end
